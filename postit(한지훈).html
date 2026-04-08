@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>내 버킷리스트 카드</title>
+    <style>
+        /* 기본 카드 디자인 (자유롭게 수정 가능) */
+        .card {
+            width: 300px;
+            margin: 50px auto;
+            background: linear-gradient(135deg, #a9513b 20%, #4b301e 100%);
+            padding: 15px 15px 35px 15px;
+            border-radius: 2px 2px 15px 5px;
+            box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 15px; }
+        .card h2 { color: #ffffff; font-size: 1.5rem; margin-bottom: 10px; }
+        .card p { color: #ffffff; font-size: 1.1rem; line-height: 1.5; }
+
+        .badge {
+            position: absolute;
+            top: -20px; left: 250px;
+            background-color: rgb(0, 238, 255);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #000000;
+        }
+
+        .secret-memo {
+            visibility: hidden;
+            opacity: 0;
+            color: #ff4d4d;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            transform: translateY(10px);
+        }
+
+        .card:hover {
+            transform: scale(1.10) rotate(5deg);
+            box-shadow: 6px 10px 25px rgba(0, 0, 0, 0.25);
+            z-index: 300;
+        }
+
+        .card:hover .secret-memo {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+            <!-- 개인별로 배지 추가하기 (absolute 실습) -->
+            <div class="badge" style="position: absolute;">Clown🤡</div>
+            <img src="https://plus.unsplash.com/premium_photo-1674327105074-46dd8319164b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="커피 사진">
+            <h2>✨ 한지훈의 꿈</h2>
+            <p>☕ 1. 집에서 커피즐기기 (✿´ ‿`)☕ԅ(´ڡ`ԅ)</p>
+            <p>💻 2. 독립해서 조용히 아무일 없이 사는 것</p>
+            
+            <!-- 개인별로 비밀 메모 추가하기 (visibility 실습) -->
+            <div class="secret-memo">🤫 TMI: 외로움 은근 잘탐</div>
+    </div>
+    </body>
+</html>

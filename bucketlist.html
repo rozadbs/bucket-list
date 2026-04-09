@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>내 버킷리스트 카드</title>
+    <style> 
+        * {
+            font-family: oswald, sans-serif;
+        }
+        .card {
+            width: 500px;
+            margin: 100px auto;
+            background: linear-gradient(90deg, #ff0000 0%, #c300ff 100%);
+            padding: 15px 15px 35px 15px;
+            border-radius: 2px 2px 15px 5px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.15);
+            
+            /* 배지의 기준점이 되기 위한 필수 속성 */
+            position: relative; 
+        }
+        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 15px; }
+        .card h2 { color: #ffffff; font-size: 1.5rem; margin-bottom: 10px;}
+        .card p { color: #ffffff; font-size: 1.1rem; line-height: 1.5; }
+
+        /* 1. 배지 (absolute) 관련 CSS를 작성하세요 */
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+
+        }
+        
+
+        /* 2. 비밀 메모 (visibility) 및 hover 효과 관련 CSS를 작성하세요 */
+        .tmi {
+            visibility: hidden;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="badge">GOOD LIFE</div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI_CZ1zBPAPLnWvHDqBlIbPGZ8hxS7Bvnjng&s" alt="바다 풍경">
+        
+        <h2> 멋진 삶</h2>
+        <p> 1. 운전 면허 따기 </p>
+        <p>2. 학점 잘 받기</p>
+        <p class="tmi">건강이 제일 증요!</p>
+        
+        </div>
+    </body>
+</html> 

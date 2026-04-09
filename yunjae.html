@@ -1,0 +1,46 @@
+        <!-- 팀원 카드 시작 -->
+         <style>
+            .card {
+                background: Radial-gradient(at top left,#9FF6FA, #ffffff); 
+                position: relative; 
+                padding: 20px; 
+                border-radius: 10px; 
+                width: 300px; height: 450px; margin: 20px;
+                box-shadow: 0 1px 8px rgba(159, 246, 250, 0.9);
+            }
+            .badge {
+                position: absolute; 
+                top: 10px; 
+                right: 10px; 
+                background-color: #FF6F91; 
+                color: white; 
+                padding: 5px 10px; 
+                border-radius: 15px;
+            }
+            p { font-style : italic; }
+
+            .secret-memo {
+                visibility: hidden; 
+                margin-top: 20px; 
+                background-color: #F6D55C; 
+                padding: 10px; 
+                border-radius: 10px;
+            }
+            .card:hover .secret-memo {
+               visibility: visible;
+            }
+        </style>
+        <div class="card">
+            <!-- 개인별로 배지 추가하기 (absolute 실습) -->
+            <!-- <div class="badge" style="position: absolute; ...">Hot🔥</div> -->
+            <div class="badge">Awesome💥</div>
+            <img src=https://www.thetimes.com/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F7510fc3d-ce85-4200-a7cf-49d6f22ea9e7.jpg?strip alt="스위스 사진" style="height: 150px; width: 100%; border-radius: 10px;">
+            <h2 >✨ 주윤재의 꿈</h2>
+            <p>⚽ 1. 맨체스터 시티 현지 직관 가기</p>
+            <p>✈️ 2. 스위스 여행 가기</p>
+            
+            <!-- 개인별로 비밀 메모 추가하기 (visibility 실습) -->
+            <!-- <div class="secret-memo" style="visibility: hidden;">🤫 TMI: 수영 못함</div> -->
+             <div class="secret-memo">TMI: 11년차 맨시티팬</div>
+        </div>
+        <!-- 팀원 카드 끝 -->

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>우리 조 버킷리스트 아트 월</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+    <style>
+        /* ================= 공통 스타일 ================= */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Nanum Pen Script', cursive;
+            background-color: #d4b895;
+            background-image: url('https://www.transparenttextures.com/patterns/cork-board.png');
+            background-attachment: fixed;
+            text-align: center;
+            padding-bottom: 100px;
+        }
+        header {
+            margin: 60px auto 40px auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: inline-block;
+            padding: 20px 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+        h1 { color: #333; font-size: 2.8rem; margin-bottom: 10px; }
+        .clearfix::after { content: ""; display: block; clear: both; }
+        .gallery-container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        
+        /* 공통 카드 레이아웃 스타일 */
+        .card {
+            float: left; width: 31.33%; margin: 1%;
+            padding: 15px 15px 35px 15px;
+            border-radius: 2px 2px 15px 5px;
+            position: relative; 
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease, z-index 0.1s, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05) rotate(0deg);
+            z-index: 10;
+        }
+        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 15px; }
+        .card h2 { color: #2c3e50; font-size: 1.8rem; margin-bottom: 10px; }
+        .card p { color: #444; font-size: 1.3rem; text-align: left; line-height: 1.5; }
+
+        /* ================= 윤재님 카드 스타일 ================= */
+        #card-yunjae {
+            background: radial-gradient(at top left, #9FF6FA, #ffffff);
+            box-shadow: 0 1px 8px rgba(159, 246, 250, 0.9);
+        }
+        #card-yunjae .badge {
+            position: absolute; top: 10px; right: 10px;
+            background-color: #FF6F91; color: white; padding: 5px 10px; border-radius: 15px;
+            font-size: 1rem;
+        }
+        #card-yunjae .secret-memo {
+            visibility: hidden; margin-top: 20px; background-color: #F6D55C;
+            padding: 10px; border-radius: 10px; font-style: normal; font-size: 1.3rem; color: #333; text-align: left;
+        }
+        #card-yunjae:hover .secret-memo { visibility: visible; }
+
+        /* ================= 지훈님 카드 스타일 ================= */
+        #card-jh {
+            background: linear-gradient(135deg, #a9513b 20%, #4b301e 100%);
+            box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        #card-jh h2, #card-jh p { color: #ffffff; }
+        #card-jh .badge {
+            position: absolute; top: -15px; right: 15px;
+            background-color: rgb(0, 238, 255); padding: 5px 10px; border-radius: 20px;
+            font-size: 1rem; color: #000000;
+        }
+        #card-jh .secret-memo {
+            visibility: hidden; opacity: 0; color: #ff4d4d; font-weight: bold; margin-top: 15px;
+            transition: opacity 0.25s ease, transform 0.25s ease; transform: translateY(10px);
+            font-size: 1.3rem; text-align: left;
+        }
+        #card-jh:hover .secret-memo { visibility: visible; opacity: 1; transform: translateY(0); }
+
+        /* ================= 서준님 카드 스타일 ================= */
+        #card-sj {
+            background: linear-gradient(135deg, #fffcf0 0%, #fff3b0 100%);
+            box-shadow: 3px 5px 15px rgba(0,0,0,0.15);
+        }
+        #card-sj .badge {
+            position: absolute; top: -15px; right: 10px; width: auto; 
+            background: orange; padding: 5px 10px; border-radius: 10px; font-size: 1rem; font-weight: bold;
+        }
+        #card-sj .secret-memo {
+            visibility: hidden; margin-top: 15px; padding: 10px; 
+            background: #e8e8e8; border-radius: 10px; font-size: 1.3rem; text-align: left;
+        }
+        #card-sj:hover .secret-memo { visibility: visible; }
+
+        /* ================= 형선님 카드 스타일 ================= */
+        #card-hs {
+            background: linear-gradient(135deg, #fffcf0 0%, #ff6f61 100%);
+            box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        #card-hs h2, #card-hs p { font-family: 'Cute Font', sans-serif; font-size: 1.8rem; text-align: center; }
+        #card-hs .badge {
+            position: absolute; top: -10px; left: -10px;
+            background-color: #de2aca; color: white; padding: 5px 15px;
+            border-radius: 20%/50%; transform: rotate(-17deg); font-size: 1.2rem; font-weight: bold;
+        }
+        #card-hs .secret-note {
+            visibility: hidden; border-top: 2px dotted #cccccc; margin-top: 15px; padding-top: 10px; color: #333;
+        }
+        #card-hs:hover .secret-note { visibility: visible; }
+
+        /* ================= NEW: 멋진 삶 카드 스타일 ================= */
+        #card-new {
+            background: linear-gradient(90deg, #ff4e50 0%, #f9d423 100%);
+            box-shadow: 3px 5px 15px rgba(0,0,0,0.2);
+            transform: rotate(2deg); /* 다른 카드와 반대 방향으로 살짝 틀기 */
+        }
+        #card-new h2, #card-new p { color: #ffffff; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+        #card-new .badge {
+            position: absolute; top: 10px; right: 10px;
+            background-color: #e74c3c; color: white; padding: 5px 12px; border-radius: 5px;
+            font-size: 1rem; font-weight: bold; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+        #card-new .tmi {
+            visibility: hidden; margin-top: 15px; padding: 10px; 
+            background: rgba(255, 255, 255, 0.2); border-radius: 10px; 
+            font-size: 1.3rem; color: #fff; text-align: center; border: 1px dashed #fff;
+        }
+        #card-new:hover .tmi { visibility: visible; }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏖️ 2026 버킷리스트 아트 월 🏖️</h1>
+        <p style="font-size: 1.5rem; color: #555;">우리 조의 꿈들을 코르크 보드에 붙였습니다!</p>
+    </header>
+    
+    <main class="gallery-container clearfix">
+        
+        <div class="card" id="card-yunjae">
+            <div class="badge">Awesome💥</div>
+            <img src="https://www.thetimes.com/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F7510fc3d-ce85-4200-a7cf-49d6f22ea9e7.jpg?strip" alt="스위스">
+            <h2>✨ 주윤재의 꿈</h2>
+            <p>⚽ 1. 맨체스터 시티 현지 직관</p>
+            <p>✈️ 2. 스위스 여행 가기</p>
+            <div class="secret-memo">TMI: 11년차 맨시티팬</div>
+        </div>
+
+        <div class="card" id="card-jh">
+            <div class="badge">Clown🤡</div>
+            <img src="https://plus.unsplash.com/premium_photo-1674327105074-46dd8319164b?q=80&w=1470&auto=format&fit=crop" alt="커피">
+            <h2>✨ 한지훈의 꿈</h2>
+            <p>☕ 1. 집에서 커피즐기기</p>
+            <p>💻 2. 독립해서 조용히 살기</p>
+            <div class="secret-memo">🤫 TMI: 외로움 은근 잘탐</div>
+        </div>
+
+        <div class="card" id="card-sj">
+             <div class="badge">게임프로그래머💻</div>
+            <img src="https://dimg.donga.com/wps/NEWS/IMAGE/2019/08/27/97144572.1.png" alt="바다">
+            <h2>✨ 정서준의 꿈</h2>
+            <p>💻 1. 게임프로그래머 되기</p>
+            <p>💻 2. 제대로된 게임 만들기</p>
+             <div class="secret-memo">TMI: 간단한 게임은 만들어봄</div>
+        </div>
+
+        <div class="card" id="card-hs">
+            <div class="badge">Good👍</div>
+            <img src="https://i.namu.wiki/i/LRZ5ctQhLDCY8qpLGSHcGe9PWs_yRXaSNiLnQnL0EOlVbWw_PXv0d-MtPpHeLg3aP7NynGoPnPGgoPmP5JntmG69JVJZ5kZIVa6SrOUj4uPwpngoHTsNFUEa2UcFUFKqp7pEx8Gem1TcgM4s0TOYEg.webp" alt="일본">
+            <h2>✨ 형선의 꿈</h2>
+            <p>✈️ 1. 일주일 해외 여행</p>
+            <p>🎮 2. 게임 만들어 보기</p>
+            <div class="secret-note">🤫 TMI: 도쿄는 가봤음</div>
+        </div>
+
+        <div class="card" id="card-new">
+            <div class="badge">GOOD LIFE</div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI_CZ1zBPAPLnWvHDqBlIbPGZ8hxS7Bvnjng&s" alt="바다 풍경">
+            <h2>✨ 김건우의 꿈</h2>
+            <p>🚗 1. 운전 면허 따기</p>
+            <p>📖 2. 학점 잘 받기</p>
+            <div class="tmi">건강이 제일 중요! 💪</div>
+        </div>
+
+    </main>
+</body>
+</html>
